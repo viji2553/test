@@ -1,9 +1,9 @@
 module "vpc_mod" {
-  source = "./vpc"
+  source = "../vpc"
 }
 
 module "keypair_mod" {
-  source = "./keypair"
+  source = "../keypair"
 }
 
 data "template_file" "user_data" {
