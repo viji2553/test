@@ -1,3 +1,3 @@
 module "ec2_mod" {
-  source    ="../modules/ec2"
+  source    ="/var/lib/jenkins/workspace/firstpipeline/modules/ec2"
 }
