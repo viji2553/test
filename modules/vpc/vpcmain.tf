@@ -31,7 +31,7 @@ resource "aws_route_table_association" "subnet-association" {
   route_table_id = aws_route_table.primary-route-table.id
 }
 
-                                              
+
 
 resource "aws_security_group" "web_server_sg" {
 

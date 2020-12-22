@@ -1,13 +1,13 @@
 module "vpc_mod" {
-  source = "../vpc"
+  source = "./vpc"
 }
 
 module "keypair_mod" {
-  source = "../keypair"
+  source = "./keypair"
 }
 
 data "template_file" "user_data" {
-  template = file("C:/Users/vijayakumar.gopal/Desktop/vijayterraform/modules/ec2/data.sh")
+  template = file("./data.sh")
 }
 
 resource "aws_instance" "web_server" {
