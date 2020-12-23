@@ -28,7 +28,7 @@ resource "aws_instance" "web_server" {
 
 }
 
-resource "aws_eip" "elasticip" {
+resource "aws_eip" "elasticip1" {
   instance = aws_instance.web_server.id
   vpc      = true
 }

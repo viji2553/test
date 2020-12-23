@@ -9,9 +9,9 @@ terraform {
   }
   backend "s3" {
     bucket  = "vijaystate"
-    key     = "terraform.tfstate"
+    key     = "terraform_new.tfstate"
     region  = "ap-south-1"
-    dynamodb_table = "viji1"
+    dynamodb_table = "viji2"
   }
 }
 

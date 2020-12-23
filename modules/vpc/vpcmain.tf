@@ -1,41 +1,41 @@
-resource "aws_vpc" "primaryvpc" {
-    cidr_block = "10.0.0.0/16"
+resource "aws_vpc" "primaryvpc1" {
+    cidr_block = "10.210.0.0/16"
     enable_dns_hostnames = true
     enable_dns_support = true
 
 }
 
-resource "aws_subnet" "primarysubnet" {
-    vpc_id = aws_vpc.primaryvpc.id
-    cidr_block = "10.0.0.0/24"
+resource "aws_subnet" "primarysubnet1" {
+    vpc_id = aws_vpc.primaryvpc1.id
+    cidr_block = "10.210.0.0/24"
     availability_zone = "ap-south-1a"
 
 }
 
-resource "aws_internet_gateway" "primaryigw" {
-  vpc_id = aws_vpc.primaryvpc.id
+resource "aws_internet_gateway" "primaryigw1" {
+  vpc_id = aws_vpc.primaryvpc1.id
 }
 
-resource "aws_route_table" "primary-route-table" {
-  vpc_id = aws_vpc.primaryvpc.id
+resource "aws_route_table" "primary-route-table1" {
+  vpc_id = aws_vpc.primaryvpc1.id
 
 route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.primaryigw.id
+    gateway_id = aws_internet_gateway.primaryigw1.id
   }
 
 }
 
-resource "aws_route_table_association" "subnet-association" {
-  subnet_id      = aws_subnet.primarysubnet.id
-  route_table_id = aws_route_table.primary-route-table.id
+resource "aws_route_table_association" "subnet-association1" {
+  subnet_id      = aws_subnet.primarysubnet1.id
+  route_table_id = aws_route_table.primary-route-table1.id
 }
 
 
 
-resource "aws_security_group" "web_server_sg" {
+resource "aws_security_group" "web_server_sg1" {
 
-  vpc_id = aws_vpc.primaryvpc.id
+  vpc_id = aws_vpc.primaryvpc1.id
 
   ingress {
     protocol    = "tcp"
@@ -60,13 +60,13 @@ resource "aws_security_group" "web_server_sg" {
 }
 
 output "vpcid" {
-  value = aws_vpc.primaryvpc.id
+  value = aws_vpc.primaryvpc1.id
 }
 
 output "subnetid" {
-  value = aws_subnet.primarysubnet.id
+  value = aws_subnet.primarysubnet1.id
 }
 
 output "sgid" {
-  value = aws_security_group.web_server_sg.id
+  value = aws_security_group.web_server_sg1.id
 }
