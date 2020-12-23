@@ -1,13 +1,13 @@
 module "vpc_mod" {
-  source = "/var/lib/jenkins/workspace/firstpipeline/modules/vpc"
+  source = "/var/lib/jenkins/workspace/test/modules/vpc"
 }
 
 module "keypair_mod" {
-  source = "/var/lib/jenkins/workspace/firstpipeline/modules/keypair"
+  source = "/var/lib/jenkins/workspace/test/modules/keypair"
 }
 
 data "template_file" "user_data" {
-  template = file("/var/lib/jenkins/workspace/firstpipeline/modules/ec2/data.sh")
+  template = file("/var/lib/jenkins/workspace/test/modules/ec2/data.sh")
 }
 
 resource "aws_instance" "web_server" {
