@@ -21,8 +21,8 @@ resource "aws_instance" "web_server" {
 
   tags = {
 
-    Name = "Vijaypc"
-    date = "18-12-2020"
+    Name = "Vijaypc-webserver"
+    date = "23-12-2020"
 
   }
 
