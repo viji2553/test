@@ -1,13 +1,13 @@
 module "vpc_mod" {
-  source = "/var/lib/jenkins/workspace/test/modules/vpc"
+  source = "/var/lib/jenkins/workspace/test1/modules/vpc"
 }
 
 module "keypair_mod" {
-  source = "/var/lib/jenkins/workspace/test/modules/keypair"
+  source = "/var/lib/jenkins/workspace/test1/modules/keypair"
 }
 
 data "template_file" "user_data" {
-  template = file("/var/lib/jenkins/workspace/test/modules/ec2/data.sh")
+  template = file("/var/lib/jenkins/workspace/test1/modules/ec2/data.sh")
 }
 
 resource "aws_instance" "web_server" {
