@@ -25,7 +25,7 @@ resource "aws_instance" "web_server" {
 
   tags = {
 
-    Name = "Vijaypc-webserver"
+    Name = "Vijaypc-webserver + docker"
     date = "23-12-2020"
 
   }
@@ -44,34 +44,4 @@ variable "ami" {
 
 output "instanceid" {
   value = aws_instance.web_server.id
-}
-
-resource "aws_instance" "docker_server" {
-  ami                         = var.ami
-  instance_type               = "t2.micro"
-  vpc_security_group_ids      = [module.vpc_mod.sgid]
-  subnet_id                   = module.vpc_mod.subnetid
-  key_name                    = module.keypair_mod.keypairid
-  associate_public_ip_address = true
-  user_data = data.template_file.user_data1.rendered
-
-  tags = {
-
-    Name = "Vijaypc-dokcerserver"
-    date = "9-1-2021"
-
-  }
-
-}
-
-resource "aws_eip" "elasticip2" {
-  instance = aws_instance.docker_server.id
-  vpc      = true
-}
-
-
-
-
-output "instanceid1" {
-  value = aws_instance.docker_server.id
 }
