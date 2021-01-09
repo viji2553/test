@@ -6,6 +6,10 @@ module "keypair_mod" {
   source = "/var/lib/jenkins/workspace/test1/modules/keypair"
 }
 
+data "template_file" "user_data" {
+  template = file("/var/lib/jenkins/workspace/test1/modules/ec2/data.sh")
+}
+
 data "template_file" "user_data1" {
   template = file("/var/lib/jenkins/workspace/test1/modules/ec2/data1.sh")
 }
@@ -49,7 +53,7 @@ resource "aws_instance" "docker_server" {
   subnet_id                   = module.vpc_mod.subnetid
   key_name                    = module.keypair_mod.keypairid
   associate_public_ip_address = true
-  user_data = data.template_file.user_data.rendered
+  user_data = data.template_file.user_data1.rendered
 
   tags = {
 
