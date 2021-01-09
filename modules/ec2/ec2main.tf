@@ -66,9 +66,7 @@ resource "aws_eip" "elasticip2" {
 }
 
 
-variable "ami" {
-  default = "ami-0db0b3ab7df22e366"
-}
+
 
 output "instanceid1" {
   value = aws_instance.docker_server.id
