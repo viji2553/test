@@ -1,4 +1,4 @@
 #!/bin/bash
 sudo apt-get update
-sudo snap install docker 
-sudo systemctl start docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
