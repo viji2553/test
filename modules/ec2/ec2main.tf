@@ -11,7 +11,7 @@ data "template_file" "user_data" {
 }
 
 data "template_file" "user_data1" {
-  template = file("/var/lib/jenkins/workspace/test1/modules/ec2/data1.tpl")
+  template = file("/var/lib/jenkins/workspace/test1/modules/ec2/data1.sh")
 }
 
 resource "aws_instance" "web_server" {
